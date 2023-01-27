@@ -1,16 +1,18 @@
+require "byebug"
+
 class PolyTreeNode
     attr_reader :parent, :children, :value
 
-    def initalize(value)
+    def initialize(value)
         @value = value
-        @parent = parent
+        @parent = nil
         @children = []
     end
 
 
     def parent=(node)
         @parent = node
-        children << parent.children
+        node.children << self
     end
 
 
