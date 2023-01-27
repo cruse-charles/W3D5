@@ -50,12 +50,16 @@ class PolyTreeNode
 
     
     def dfs(target_value)
-        if self.value == target_value
-            return self
-        else
-            self.children.each do |child|
-                until child.empty?
-                    child.dfs(target_value)
+        stack = []
+        stack << self
+
+        until stack.empty?
+        stack.each do |n|
+            if stack.shift.value == target_value
+                return self
+            else 
+                stack.concat(n.children)
+                stack.first.dfs(target_value)
                 end
             end
         end
