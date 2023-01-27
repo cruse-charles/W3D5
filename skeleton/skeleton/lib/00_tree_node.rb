@@ -10,27 +10,52 @@ class PolyTreeNode
     end
 
 
-    def parent=(node)
+    # def parent=(node)
                 
-        if node == nil
-            @parent.children.each.with_index |el, i|
-                if el == self
+    #     if node == nil
+    #         @parent.children.each.with_index |el, i|
+    #             if el == self
+    #                 @parent.children.delete_at(i)
+    #             end
+    #         return nil
+    #         end
+    #     end
+            
+    #         @parent = node
+    #     end
+        
+    #     if !node.children.include?(self)
+    #         node.children << self
+    #     end
+    # end
+
+
+
+    def parent=(node)
+        
+        if !self.parent == nil
+            self.parent.children.each_with_index do |el, i|
+                if self == el
                     @parent.children.delete_at(i)
                 end
-            return nil
             end
-            
-            @parent = node
         end
+
+        @parent = node
+
+        if node == nil
+            return nil
+        end         
+
         
+
         if !node.children.include?(self)
             node.children << self
         end
     end
 
-
 end
 
 
-# a = PolyTreeNode.new(a)
-# b = PolyTreeNode.new(b)
+# a = PolyTreeNode.new("a")
+# b = PolyTreeNode.new("b")
