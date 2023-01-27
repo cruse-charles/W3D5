@@ -2,14 +2,20 @@ class PolyTreeNode
     attr_reader :parent, :children, :value
 
     def initalize(value)
-        @parent = nil
+        @value = value
+        @parent = parent
         @children = []
     end
 
 
-    def parent=()
+    def parent=(node)
+        @parent = node
         children << parent.children
     end
 
 
 end
+
+
+# a = PolyTreeNode.new(a)
+# b = PolyTreeNode.new(b)
